@@ -1,0 +1,18 @@
+.tab {
+    height: 50px;
+    width: 25%;
+    border-radius: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.active-tab {
+    background: blue;
+    color: white;
+}
+
+.inactive-tab {
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
