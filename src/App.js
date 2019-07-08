@@ -4,6 +4,8 @@ import { ApolloProvider } from "react-apollo";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
 import AuctionCreated from "./components/AuctionCreated";
+import SalesSummary from "./components/SalesSummary";
+import Home from "./components/Home";
 
 const cache = new InMemoryCache();
 
@@ -16,7 +18,9 @@ class App extends React.Component {
   render(){
     return (
       <ApolloProvider client={client}>
-        <AuctionCreated />
+        <Home>
+          <SalesSummary />
+        </Home>
       </ApolloProvider>
     )
   }
