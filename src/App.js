@@ -10,7 +10,7 @@ import Home from "./components/Home";
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-  uri: "https://api.thegraph.com/subgraphs/id/QmU1Nu96TQqhs61A9ixtBUWQhAPAMNjt4SH97cqYQT45U5",
+  uri: "https://api.thegraph.com/subgraphs/id/Qmf7k7yniptjPECXMzdtseywHFvs6jrZ6k3gUfcCTnGAhh",
   // uri: "https://api.thegraph.com/subgraphs/name/sudeepb02/cryptokitties-salesauction",
   cache
 });

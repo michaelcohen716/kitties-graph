@@ -3,10 +3,11 @@ import Tabs, { TABS } from "./Tabs";
 import SalesSummary from "./SalesSummary";
 import AuctionSummary from "./Auction/AuctionSummary";
 import MyAnalysis from "./Masters/MyAnalysis";
+import DailyTrends from "./Trends/DailyTrends"
 import "./Home.css";
 
 function Home() {
-  const [activeTab, setActiveTab] = useState(TABS[0]);
+  const [activeTab, setActiveTab] = useState(TABS[3]);
 
   const activeView = () => {
     switch (activeTab) {
@@ -23,7 +24,7 @@ function Home() {
       }
 
       case TABS[3]: {
-        return <div>monthly</div>;
+        return <DailyTrends />;
       }
 
       default:
