@@ -1,7 +1,12 @@
 import React from "react";
 import "./Tabs.css";
 
-export const TABS = ["Sales Summary", "Auction Summary", "Daily", "Monthly"];
+export const TABS = [
+  "Address Analysis",
+  "Auction Summary",
+  "Sales Summary",
+  "Monthly"
+];
 
 const Tab = ({ title, active, setActiveTab }) => {
   return (
@@ -21,7 +26,12 @@ function Tabs({ activeTab, setActiveTab }) {
     <div className="d-flex">
       {TABS.map(t => {
         return (
-          <Tab title={t} active={t === activeTab} setActiveTab={setActiveTab} />
+          <Tab
+            key={t}
+            title={t}
+            active={t === activeTab}
+            setActiveTab={setActiveTab}
+          />
         );
       })}
     </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Tabs, { TABS } from "./Tabs";
 import SalesSummary from "./SalesSummary";
 import AuctionSummary from "./Auction/AuctionSummary";
+import MyAnalysis from "./Masters/MyAnalysis";
 import "./Home.css";
 
 function Home() {
@@ -10,15 +11,15 @@ function Home() {
   const activeView = () => {
     switch (activeTab) {
       case TABS[0]: {
-        return <SalesSummary />;
+        return <MyAnalysis />;
       }
 
       case TABS[1]: {
-        return <AuctionSummary />
+        return <SalesSummary />;
       }
 
       case TABS[2]: {
-        return <div>daily sum</div>;
+        return <AuctionSummary />;
       }
 
       case TABS[3]: {
