@@ -30,13 +30,15 @@ function AuctionSummary() {
           auctionsCancelled
         } = salesSummary;
 
+        const timedOut = auctionsCreated - auctionsCancelled - auctionsCompleted;
+
         return (
           <div className="d-flex flex-column mx-auto">
             <SectionHeadline text="Auction Summary" />
-            <InfoUnit title="Completed" value={auctionsCompleted} />
-            <InfoUnit title="Cancelled" value={auctionsCancelled} />
-            <InfoUnit title="Timed Out" value={auctionsCreated - auctionsCancelled - auctionsCompleted} />
-            <InfoUnit title="Total Auctions Created" value={auctionsCreated} />
+            <InfoUnit title="Completed" value={auctionsCompleted} pct={auctionsCompleted / auctionsCreated} />
+            <InfoUnit title="Cancelled" value={auctionsCancelled} pct={auctionsCancelled / auctionsCreated} />
+            <InfoUnit title="Timed Out" value={timedOut} pct={timedOut / auctionsCreated} />
+            <InfoUnit title="All Time Auctions" value={auctionsCreated} pct={true}/>
           </div>
         );
       }}

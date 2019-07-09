@@ -3,6 +3,6 @@
     background: white;
     min-height: 500px;
     border: 2px solid blue;
-    border-radius: 8px;
-    box-shadow: 1px 1px 0px blue;
+    border-radius: 2px;
+    /* box-shadow: 1px 1px 0px blue; */
 }

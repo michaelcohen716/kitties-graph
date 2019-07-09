@@ -1,0 +1,50 @@
+.address-input {
+  width: 300px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  height: 30px;
+  font-size: 14px;
+}
+
+.address-input:focus {
+  outline: none;
+}
+
+.address-label {
+  font-size: 12px;
+  color: gray;
+}
+
+.address-button {
+  width: 100px;
+  background: blue;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.address-button:hover {
+  color: blue;
+  background: white;
+  border: 2px solid blue;
+}
+
+.address-error {
+  font-size: 12px;
+  color: red;
+}
+
+.section-title {
+  font-size: 12px;
+  color: lightgray;
+}
+
+.section-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: blue;
+}
