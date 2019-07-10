@@ -3,12 +3,12 @@ import Tabs, { TABS } from "./Tabs";
 import SalesSummary from "./SalesSummary";
 import AuctionSummary from "./Auction/AuctionSummary";
 import MyAnalysis from "./Masters/MyAnalysis";
-import DailyTrends from "./Trends/DailyTrends"
-import SiringDailyTrends from "./Trends/SiringDailyTrends"
+import DailyTrends from "./Trends/DailyTrends";
+import SiringDailyTrends from "./Trends/SiringDailyTrends";
 import "./Home.css";
 
 function Home() {
-  const [activeTab, setActiveTab] = useState(TABS[3]);
+  const [activeTab, setActiveTab] = useState(TABS[0]);
 
   const activeView = () => {
     switch (activeTab) {
@@ -34,9 +34,12 @@ function Home() {
   };
 
   return (
-    <div className="home mx-auto mt-5">
-      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="d-flex">{activeView()}</div>
+    <div className="mx-auto mt-2 header">
+      <div className="header-text p-2">CryptoKitties Subgraph Dapp</div>
+      <div className="home mx-auto mt-1">
+        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="d-flex">{activeView()}</div>
+      </div>
     </div>
   );
 }

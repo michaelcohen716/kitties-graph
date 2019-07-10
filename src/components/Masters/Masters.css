@@ -40,11 +40,17 @@
 
 .section-title {
   font-size: 12px;
-  color: lightgray;
+  color: gray;
 }
 
 .section-value {
   font-size: 14px;
   font-weight: bold;
   color: blue;
+}
+
+.example-address {
+  font-size: 12px;
+  color: blue;
+  cursor: pointer;
 }

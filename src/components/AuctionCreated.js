@@ -12,17 +12,14 @@ function AuctionCreated() {
     >
       {({ loading, error, data, fetchMore }) => {
         if (loading) {
-          console.log("loading");
           return <p>loading...</p>;
         }
 
         if (error) {
-          console.log("error", error);
           return <p>error...</p>;
         }
 
         const { auctionCreateds } = data;
-        console.log("auction createds", auctionCreateds);
 
         return <div>query success?</div>;
       }}

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Query } from "react-apollo";
 import { GET_MASTERS } from "../../queries/masters";
 import SectionHeadline from "../common/SectionHeadline";
+import Loading from "../common/Loading";
+import Error from "../common/Error";
 import EthAddress from "ethereum-address";
 import Blockies from "react-blockies";
 import Moment from "react-moment";
@@ -13,10 +15,9 @@ const web3 = new Web3();
 function MyAnalysis() {
   const [showData, toggleShowData] = useState(false);
   const [error, setError] = useState(null);
-  const [analysisAddress, setAnalysisAddress] = useState(
-    "0x42dfa7e528cc9d9c69a855ef2eabf68a5afa8fbe"
-  );
-  //   const [analysisAddress, setAnalysisAddress] = useState("");
+  const [analysisAddress, setAnalysisAddress] = useState("");
+
+  const exampleAddress = "0x42dfa7e528cc9d9c69a855ef2eabf68a5afa8fbe"
 
   const sanitize = weiVal => {
     let val = web3.utils.fromWei(weiVal, "ether");
@@ -53,6 +54,7 @@ function MyAnalysis() {
               Submit
             </div>
           </div>
+          <div className="example-address mt-1" onClick={() =>  setAnalysisAddress(exampleAddress)}>Use example address</div>
           <div className="address-error">{error}</div>
         </div>
       </div>
@@ -68,17 +70,14 @@ function MyAnalysis() {
     >
       {({ loading, error, data, fetchMore }) => {
         if (loading) {
-          console.log("loading");
-          return <p>loading...</p>;
+          return <Loading />;
         }
 
         if (error) {
-          console.log("error", error);
-          return <p>error...</p>;
+          return <Error />
         }
 
         const { masters } = data;
-        console.log(masters);
 
         if (!masters || !masters[0] || !masters[0].id) {
           return <div>No results</div>;
@@ -131,14 +130,18 @@ function MyAnalysis() {
             </div>
 
             <div className="d-flex mt-3">
-              <div style={{ width: '42px' }} />
+              <div style={{ width: "42px" }} />
               <div className="d-flex flex-column mx-2">
                 <div className="section-title mx-auto">Spent on Kitties</div>
-                <div className="mx-auto section-value">{sanitize(valueSpentBuying)} Ξ</div>
+                <div className="mx-auto section-value">
+                  {sanitize(valueSpentBuying)} Ξ
+                </div>
               </div>
               <div className="d-flex flex-column mx-2">
                 <div className="section-title mx-auto">Earned on Kitties</div>
-                <div className="mx-auto section-value">{sanitize(valueEarnedSelling)} Ξ</div>
+                <div className="mx-auto section-value">
+                  {sanitize(valueEarnedSelling)} Ξ
+                </div>
               </div>
             </div>
           </div>
