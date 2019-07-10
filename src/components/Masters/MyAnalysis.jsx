@@ -5,7 +5,10 @@ import SectionHeadline from "../common/SectionHeadline";
 import EthAddress from "ethereum-address";
 import Blockies from "react-blockies";
 import Moment from "react-moment";
+import Web3 from "web3";
 import "./Masters.css";
+
+const web3 = new Web3();
 
 function MyAnalysis() {
   const [showData, toggleShowData] = useState(false);
@@ -14,6 +17,11 @@ function MyAnalysis() {
     "0x42dfa7e528cc9d9c69a855ef2eabf68a5afa8fbe"
   );
   //   const [analysisAddress, setAnalysisAddress] = useState("");
+
+  const sanitize = weiVal => {
+    let val = web3.utils.fromWei(weiVal, "ether");
+    return val.slice(0, 5);
+  };
 
   const submit = () => {
     if (EthAddress.isAddress(analysisAddress)) {
@@ -80,7 +88,9 @@ function MyAnalysis() {
           firstTransacted,
           lastTransacted,
           totalKittiesBought,
-          totalKittiesSold
+          totalKittiesSold,
+          valueSpentBuying,
+          valueEarnedSelling
         } = masters[0];
 
         return (
@@ -117,6 +127,18 @@ function MyAnalysis() {
               <div className="d-flex flex-column mx-2">
                 <div className="section-title mx-auto">Kitties Sold</div>
                 <div className="mx-auto section-value">{totalKittiesSold}</div>
+              </div>
+            </div>
+
+            <div className="d-flex mt-3">
+              <div style={{ width: '42px' }} />
+              <div className="d-flex flex-column mx-2">
+                <div className="section-title mx-auto">Spent on Kitties</div>
+                <div className="mx-auto section-value">{sanitize(valueSpentBuying)} Ξ</div>
+              </div>
+              <div className="d-flex flex-column mx-2">
+                <div className="section-title mx-auto">Earned on Kitties</div>
+                <div className="mx-auto section-value">{sanitize(valueEarnedSelling)} Ξ</div>
               </div>
             </div>
           </div>
