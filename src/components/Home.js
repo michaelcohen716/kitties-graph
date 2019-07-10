@@ -8,7 +8,7 @@ import SiringDailyTrends from "./Trends/SiringDailyTrends"
 import "./Home.css";
 
 function Home() {
-  const [activeTab, setActiveTab] = useState(TABS[2]);
+  const [activeTab, setActiveTab] = useState(TABS[3]);
 
   const activeView = () => {
     switch (activeTab) {

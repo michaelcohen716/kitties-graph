@@ -5,9 +5,10 @@ import { Query } from "react-apollo";
 import LineChart from "react-linechart";
 import Moment from "react-moment";
 import moment from "moment";
-import DatePicker from "react-datepicker";
+import DatePickers from "../common/DatePickers";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../../node_modules/react-linechart/dist/styles.css";
+import "./Trends.css";
 
 export const renderChart = (dataInput, siring) => {
   let xMin, xMax;
@@ -59,11 +60,12 @@ export const renderChart = (dataInput, siring) => {
 
 function DailyTrends() {
   const newDate = startBool => {
+    // const date = startBool
+      // ? moment().subtract(450, "days")
+      //  : moment().subtract(440, "days");
     const date = startBool
-      ? moment().subtract(450, "days")
-      : //   ? moment().subtract(11, "days")
-        moment().subtract(440, "days");
-    //   : moment().subtract(1, "days");
+      ? moment().subtract(11, "days")
+       : moment().subtract(1, "days");
     return date._d;
   };
   const [startDate, setStartDate] = useState(newDate(true));
@@ -78,28 +80,12 @@ function DailyTrends() {
   return (
     <div className="d-flex flex-column mx-auto">
       <SectionHeadline text="Sales Auctions Created - 10 Day Trend" />
-      <div className="d-flex flex-column">
-
-        <div>
-            Please pick a 10-day range
-        </div>
-      <div className="d-flex">
-        <div className="d-flex flex-column">
-          <div>Start Date</div>
-          <DatePicker
-            selected={startDate}
-            onChange={date => setStartDate(date)}
-            />
-        </div>
-        <div className="d-flex flex-column">
-          <div>End Date</div>
-          <DatePicker 
-            selected={endDate} 
-            onChange={date => setEndDate(date)} 
-            />
-        </div>
-      </div>
-            </div>
+      <DatePickers
+        startDate={startDate}
+        setStartDate={setStartDate}
+        endDate={endDate}
+        setEndDate={setEndDate}
+      />
       <Query
         query={GET_DAILY_TRENDS}
         variables={{

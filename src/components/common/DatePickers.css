@@ -1,0 +1,15 @@
+.instructions {
+    font-size: 12px;
+    color: green;
+}
+
+.date-header {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: blue;
+}
+
+.react-datepicker-wrapper {
+    font-size: 12px;
+}
