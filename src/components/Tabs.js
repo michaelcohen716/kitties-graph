@@ -3,9 +3,9 @@ import "./Tabs.css";
 
 export const TABS = [
   "Address Analysis",
-  "Auction Summary",
-  "Sales Summary",
-  "Daily Trend"
+  "Overall Summary",
+  "Daily Trend - Sales",
+  "Daily Trend - Siring"
 ];
 
 const Tab = ({ title, active, setActiveTab }) => {

@@ -4,6 +4,7 @@ import SalesSummary from "./SalesSummary";
 import AuctionSummary from "./Auction/AuctionSummary";
 import MyAnalysis from "./Masters/MyAnalysis";
 import DailyTrends from "./Trends/DailyTrends"
+import SiringDailyTrends from "./Trends/SiringDailyTrends"
 import "./Home.css";
 
 function Home() {
@@ -16,15 +17,15 @@ function Home() {
       }
 
       case TABS[1]: {
-        return <SalesSummary />;
-      }
-
-      case TABS[2]: {
         return <AuctionSummary />;
       }
 
-      case TABS[3]: {
+      case TABS[2]: {
         return <DailyTrends />;
+      }
+
+      case TABS[3]: {
+        return <SiringDailyTrends />;
       }
 
       default:

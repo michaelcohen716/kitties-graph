@@ -19,9 +19,7 @@ class App extends React.Component {
   render(){
     return (
       <ApolloProvider client={client}>
-        <Home>
-          <SalesSummary />
-        </Home>
+        <Home/>
       </ApolloProvider>
     )
   }

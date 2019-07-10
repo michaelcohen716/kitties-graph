@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import { GET_SALES_SUMMARY } from "../../queries/salesSummary";
 import InfoUnit from "../InfoUnit";
 import SectionHeadline from "../common/SectionHeadline";
+import SalesSummary from "../SalesSummary";
 
 function AuctionSummary() {
   return (
@@ -39,6 +40,7 @@ function AuctionSummary() {
             <InfoUnit title="Cancelled" value={auctionsCancelled} pct={auctionsCancelled / auctionsCreated} />
             <InfoUnit title="Timed Out" value={timedOut} pct={timedOut / auctionsCreated} />
             <InfoUnit title="All Time Auctions" value={auctionsCreated} pct={true}/>
+            <SalesSummary />
           </div>
         );
       }}
