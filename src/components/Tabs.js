@@ -5,7 +5,7 @@ export const TABS = [
   "Address Analysis",
   "Auction Summary",
   "Sales Summary",
-  "Monthly"
+  "Daily Trend"
 ];
 
 const Tab = ({ title, active, setActiveTab }) => {
