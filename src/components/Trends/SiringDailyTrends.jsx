@@ -16,8 +16,6 @@ const customClient = new ApolloClient({
 });
 
 function SiringDailyTrends() {
-  
-
   return (
     <Query query={GET_DAILY_TRENDS_SIRING} client={customClient}>
       {({ loading, error, data, fetchMore }) => {
@@ -30,13 +28,13 @@ function SiringDailyTrends() {
           console.log("error", error);
           return <p>error...</p>;
         }
-        console.log("siringdata", data)
+        console.log("siringdata", data);
         return (
-            <div className="d-flex flex-column mx-auto">
-                <SectionHeadline text="Siring Auctions Created - 10 Day Trend" />
-                {renderChart(data, true)}
-            </div>
-        )
+          <div className="d-flex flex-column mx-auto">
+            <SectionHeadline text="Siring Auctions Created - 10 Day Trend" />
+            {renderChart(data, true)}
+          </div>
+        );
       }}
     </Query>
   );

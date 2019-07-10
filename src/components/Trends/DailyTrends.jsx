@@ -4,19 +4,23 @@ import { GET_DAILY_TRENDS } from "../../queries/dailyTrends";
 import { Query } from "react-apollo";
 import LineChart from "react-linechart";
 import Moment from "react-moment";
+import moment from "moment";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../../../node_modules/react-linechart/dist/styles.css";
 
 export const renderChart = (dataInput, siring) => {
-    let xMin, xMax;
+  let xMin, xMax;
   const dailyStats = siring ? dataInput.dailyStatSirings : dataInput.dailyStats;
   const points = dailyStats.reverse().map((p, i) => {
     let date = <Moment unix={true}>{Number(p.id) * 24 * 60 * 60}</Moment>;
     date = date.props.children;
     date = new Date(date * 1000);
     date = date.toString().split(" ");
+    console.log("date before string", date);
     date = String(date[1]) + " " + String(date[2]);
 
-    if(i === 0) xMin = date;
+    if (i === 0) xMin = date;
 
     console.log("date after string", date);
     return {
@@ -36,8 +40,7 @@ export const renderChart = (dataInput, siring) => {
     const d = new Date(xValue * 1000);
 
     const formattedTime =
-        (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
-    //   d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+      d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
     return formattedTime;
   };
 
@@ -55,13 +58,54 @@ export const renderChart = (dataInput, siring) => {
 };
 
 function DailyTrends() {
+  const newDate = startBool => {
+    const date = startBool
+      ? moment().subtract(450, "days")
+      : //   ? moment().subtract(11, "days")
+        moment().subtract(440, "days");
+    //   : moment().subtract(1, "days");
+    return date._d;
+  };
+  const [startDate, setStartDate] = useState(newDate(true));
+  const [endDate, setEndDate] = useState(newDate(false));
+
+  const formatDate = dateObject =>
+    String(Math.floor(dateObject.getTime() / 1000 / 24 / 60 / 60));
+
+  const formattedStartDate = formatDate(startDate);
+  const formattedEndDate = formatDate(endDate);
+
   return (
     <div className="d-flex flex-column mx-auto">
-      <SectionHeadline text="Auctions Created - 10 Day Trend" />
+      <SectionHeadline text="Sales Auctions Created - 10 Day Trend" />
+      <div className="d-flex flex-column">
+
+        <div>
+            Please pick a 10-day range
+        </div>
+      <div className="d-flex">
+        <div className="d-flex flex-column">
+          <div>Start Date</div>
+          <DatePicker
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+            />
+        </div>
+        <div className="d-flex flex-column">
+          <div>End Date</div>
+          <DatePicker 
+            selected={endDate} 
+            onChange={date => setEndDate(date)} 
+            />
+        </div>
+      </div>
+            </div>
       <Query
         query={GET_DAILY_TRENDS}
         variables={{
-          orderBy: "id"
+          orderBy: "id",
+          start: formattedStartDate,
+          end: formattedEndDate
         }}
       >
         {({ loading, error, data, fetchMore }) => {
@@ -72,6 +116,7 @@ function DailyTrends() {
           if (error) {
             return <p>error...</p>;
           }
+          console.log("data daily trebnds", data);
 
           return renderChart(data);
         }}
