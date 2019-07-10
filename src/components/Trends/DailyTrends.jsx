@@ -3,6 +3,8 @@ import SectionHeadline from "../common/SectionHeadline";
 import { GET_DAILY_TRENDS } from "../../queries/dailyTrends";
 import { Query } from "react-apollo";
 import LineChart from "react-linechart";
+import Loading from "../common/Loading";
+import Error from "../common/Error";
 import Moment from "react-moment";
 import moment from "moment";
 import DatePickers from "../common/DatePickers";
@@ -15,15 +17,14 @@ export const renderChart = (dataInput, siring) => {
   const dailyStats = siring ? dataInput.dailyStatSirings : dataInput.dailyStats;
   const points = dailyStats.reverse().map((p, i) => {
     let date = <Moment unix={true}>{Number(p.id) * 24 * 60 * 60}</Moment>;
+
     date = date.props.children;
     date = new Date(date * 1000);
     date = date.toString().split(" ");
-    console.log("date before string", date);
     date = String(date[1]) + " " + String(date[2]);
 
     if (i === 0) xMin = date;
 
-    console.log("date after string", date);
     return {
       x: Number(p.id) * 24 * 60 * 60,
       y: p.auctionsCreatedToday
@@ -60,9 +61,6 @@ export const renderChart = (dataInput, siring) => {
 
 function DailyTrends() {
   const newDate = startBool => {
-    // const date = startBool
-      // ? moment().subtract(450, "days")
-      //  : moment().subtract(440, "days");
     const date = startBool
       ? moment().subtract(11, "days")
        : moment().subtract(1, "days");
@@ -96,13 +94,12 @@ function DailyTrends() {
       >
         {({ loading, error, data, fetchMore }) => {
           if (loading) {
-            return <p>loading...</p>;
+            return <Loading />
           }
 
           if (error) {
-            return <p>error...</p>;
+            return <Error/>
           }
-          console.log("data daily trebnds", data);
 
           return renderChart(data);
         }}

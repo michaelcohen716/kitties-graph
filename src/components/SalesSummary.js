@@ -3,6 +3,8 @@ import { Query } from "react-apollo";
 import { GET_SALES_SUMMARY } from "../queries/salesSummary";
 import InfoUnit from "./InfoUnit";
 import SectionHeadline from "./common/SectionHeadline";
+import Error from "./common/Error";
+import Loading from "./common/Loading";
 import "./SalesSummary.css";
 
 function SalesSummary() {
@@ -15,13 +17,11 @@ function SalesSummary() {
     >
       {({ loading, error, data, fetchMore }) => {
         if (loading) {
-          console.log("loading");
-          return <p>loading...</p>;
+          return <Loading />;
         }
 
         if (error) {
-          console.log("error", error);
-          return <p>error...</p>;
+          return <Error />;
         }
 
         const { salesSummary } = data;

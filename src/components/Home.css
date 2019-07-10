@@ -4,5 +4,16 @@
     min-height: 500px;
     border: 2px solid blue;
     border-radius: 2px;
-    /* box-shadow: 1px 1px 0px blue; */
+}
+
+.header{
+    width: 800px;
+    height: 60px;
+    border-radius: 4px;
+}
+
+.header-text {
+    color: blue;
+    font-weight: bold;
+    font-size: 36px;
 }

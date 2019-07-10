@@ -48,3 +48,9 @@
   font-weight: bold;
   color: blue;
 }
+
+.example-address {
+  font-size: 12px;
+  color: blue;
+  cursor: pointer;
+}

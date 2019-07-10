@@ -3,6 +3,8 @@ import { Query } from "react-apollo";
 import { GET_DAILY_TRENDS_SIRING } from "../../queries/siring";
 import SectionHeadline from "../common/SectionHeadline";
 import DatePickers from "../common/DatePickers";
+import Loading from '../common/Loading';
+import Error from '../common/Error';
 import moment from "moment";
 import ApolloClient from "apollo-boost";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -43,13 +45,11 @@ function SiringDailyTrends() {
     >
       {({ loading, error, data, fetchMore }) => {
         if (loading) {
-          console.log("loading");
-          return <p>loading...</p>;
+          return <Loading />
         }
 
         if (error) {
-          console.log("error", error);
-          return <p>error...</p>;
+          return <Error />
         }
 
         return (
