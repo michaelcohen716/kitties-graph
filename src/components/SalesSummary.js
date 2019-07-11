@@ -28,8 +28,7 @@ function SalesSummary() {
         const { valueCompleted, valueCreated, valueCancelled } = salesSummary;
 
         return (
-          <div className="d-flex flex-column mx-auto">
-            <SectionHeadline text="Sales Summary" />
+          <div className="d-flex flex-column mx-auto mt-2">
             <InfoUnit
               title="Value Completed"
               value={valueCompleted}
