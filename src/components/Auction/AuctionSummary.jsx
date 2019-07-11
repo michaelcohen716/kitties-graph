@@ -6,6 +6,7 @@ import SectionHeadline from "../common/SectionHeadline";
 import Loading from "../common/Loading";
 import Error from "../common/Error";
 import SalesSummary from "../SalesSummary";
+import SiringSummary from "./SiringSummary";
 
 function AuctionSummary() {
   return (
@@ -34,13 +35,16 @@ function AuctionSummary() {
         const timedOut = auctionsCreated - auctionsCancelled - auctionsCompleted;
 
         return (
-          <div className="d-flex flex-column mx-auto">
-            <SectionHeadline text="Auction Summary" />
+          <div className="d-flex flex-column mx-auto" style={{
+            fontSize: "14px"
+          }}>
+            <SectionHeadline text="Sales Summary" />
             <InfoUnit title="Completed" value={auctionsCompleted} pct={auctionsCompleted / auctionsCreated} />
             <InfoUnit title="Cancelled" value={auctionsCancelled} pct={auctionsCancelled / auctionsCreated} />
             <InfoUnit title="Timed Out" value={timedOut} pct={timedOut / auctionsCreated} />
             <InfoUnit title="All Time Auctions" value={auctionsCreated} pct={true}/>
             <SalesSummary />
+            <SiringSummary />
           </div>
         );
       }}

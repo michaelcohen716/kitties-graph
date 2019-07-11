@@ -12,7 +12,7 @@ import { renderChart } from "./DailyTrends";
 
 const cache = new InMemoryCache();
 
-const customClient = new ApolloClient({
+export const customClient = new ApolloClient({
   uri: "https://api.thegraph.com/subgraphs/name/sudeepb02/cryptokitties-siringauction",
   cache
 });
