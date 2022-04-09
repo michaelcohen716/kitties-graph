@@ -9,7 +9,7 @@
     "apollo-cache-inmemory": "^1.6.2",
     "ethereum-address": "0.0.4",
     "graphql": "^14.1.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.8.2",
     "react-apollo": "^2.4.1",
     "react-blockies": "^1.4.1",
